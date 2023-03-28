@@ -651,6 +651,10 @@ namespace GercStudio.DragRacingFramework
 				case 4:
 					SetStage("Weight", carController ? carController.carId + "weightStage" : "", carController ? upgradeParameters.weightUpgrades : new List<GameHelper.UpgradeParameter>());
 					break;
+
+				case 5:
+					SetStage("Chasis", carController ? carController.carId + "Chasis_Stage" : "", carController ? upgradeParameters.Chasis_Upgrades : new List<GameHelper.UpgradeParameter>());
+					break;
 			}
 			
 			UIHelper.UpdateCarStats(currentUIManager, carController);
@@ -806,6 +810,11 @@ namespace GercStudio.DragRacingFramework
 
 					AddValues(carController.carId + "weightStage", upgradeParameters.weightUpgrades);
 					break;
+
+				case 5:
+
+					AddValues(carController.carId + "Chasis_Stage", upgradeParameters.Chasis_Upgrades);
+					break;
 			}
 		}
 
@@ -829,6 +838,7 @@ namespace GercStudio.DragRacingFramework
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "transmissionStage", -1);
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "nitroStage", -1);
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "weightStage", -1);
+				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "Chasis_Stage", -1);
 			}
 			
 			GameAssets.SaveDataToFile(gameAssets.valuesToSave);

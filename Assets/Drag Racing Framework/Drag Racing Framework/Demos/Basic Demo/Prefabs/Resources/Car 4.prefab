@@ -115,7 +115,7 @@ MonoBehaviour:
   selectedDashboard: 0
   currentTransmission: 1
   predictedTransmission: 0
-  currentInspectorTab: 1
+  currentInspectorTab: 0
   isNitro: 0
   isFinished: 0
   ai: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   desiredRotation: {x: 0, y: 0, z: 0}
   defaultBodyRotation: {x: 0, y: 0, z: 0}
   drivingDirection: {x: 0, y: 0, z: 0}
-  carImage: {fileID: 2800000, guid: a1a9c2c8f71164e54bea6681c7b6f4dc, type: 3}
+  carImage: {fileID: 2800000, guid: 668e6054a617041948fb6969b398dbb2, type: 3}
   avatarPlaceholder: {fileID: 0}
   nicknamePlaceholder: {fileID: 0}
   switchGearAudioSource: {fileID: 7587264281200510455}

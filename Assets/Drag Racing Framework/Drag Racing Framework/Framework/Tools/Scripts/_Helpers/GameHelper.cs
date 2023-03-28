@@ -50,7 +50,7 @@ namespace GercStudio.DragRacingFramework
 			public int addPowerValue = 1;
 			public int addNitroValue = 10;
 			public int addMassValue = -1;
-
+			public int addChasis = 1;
 			public bool purchased;
 		}
 
@@ -62,6 +62,7 @@ namespace GercStudio.DragRacingFramework
 			public List<UpgradeParameter> transmissionUpgrades;
 			public List<UpgradeParameter> nitroUpgrades;
 			public List<UpgradeParameter> weightUpgrades;
+			public List<UpgradeParameter> Chasis_Upgrades;
 		}
 
 		[Serializable]
@@ -315,6 +316,7 @@ namespace GercStudio.DragRacingFramework
 			vehicleController.carInfo.Power = vehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[vehicleController.carId + "power"];
 			vehicleController.carInfo.nitroTime = vehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[vehicleController.carId + "nitro"];
 			vehicleController.carInfo.Mass = vehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[vehicleController.carId + "mass"];
+			vehicleController.carInfo.Chasis = vehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[vehicleController.carId + "chasis"];
 		}
 
 		public static void LoadOpponentCarParameters(VehicleController opponentVehicleController, VehicleController playerVehicleController)
@@ -324,6 +326,7 @@ namespace GercStudio.DragRacingFramework
 			opponentVehicleController.carInfo.Power = playerVehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[playerVehicleController.carId + "power"];
 			opponentVehicleController.carInfo.nitroTime = playerVehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[playerVehicleController.carId + "nitro"];
 			opponentVehicleController.carInfo.Mass = playerVehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[playerVehicleController.carId + "mass"];
+			opponentVehicleController.carInfo.Chasis = playerVehicleController.gameManager.gameAssets.valuesToSave.installedUpgrades[playerVehicleController.carId + "chasis"];
 		}
 
 		public static void LoadCarParameters(VehicleController vehicleController, GameAssets gameData, AllUpgradeParameters upgradesParameters, UpgradesType upgradesType)
@@ -333,6 +336,7 @@ namespace GercStudio.DragRacingFramework
 			AddParameters("transmissionStage", vehicleController, gameData, upgradesParameters.transmissionUpgrades, upgradesType);
 			AddParameters("nitroStage", vehicleController, gameData, upgradesParameters.nitroUpgrades, upgradesType);
 			AddParameters("weightStage", vehicleController, gameData, upgradesParameters.weightUpgrades, upgradesType);
+			AddParameters("Chasis_Stage", vehicleController, gameData, upgradesParameters.Chasis_Upgrades, upgradesType);
 		}
 
 		static void AddParameters(string type, VehicleController vehicleController, GameAssets gameData, List<UpgradeParameter> upgradesParameters, UpgradesType upgradeType)
@@ -350,6 +354,7 @@ namespace GercStudio.DragRacingFramework
 					vehicleController.carInfo.Power += upgradesParameters[stage].addPowerValue;
 					vehicleController.carInfo.nitroTime += upgradesParameters[stage].addNitroValue;
 					vehicleController.carInfo.Mass += upgradesParameters[stage].addMassValue;
+					vehicleController.carInfo.Chasis += upgradesParameters[stage].addChasis;
 				}
 				else
 				{
@@ -358,6 +363,7 @@ namespace GercStudio.DragRacingFramework
 					AddPercent(ref vehicleController.carInfo.Power, upgradesParameters[stage].addPowerValue);
 					AddPercent(ref vehicleController.carInfo.nitroTime, upgradesParameters[stage].addNitroValue);
 					AddPercent(ref vehicleController.carInfo.Mass, upgradesParameters[stage].addMassValue);
+					AddPercent(ref vehicleController.carInfo.Chasis, upgradesParameters[stage].addChasis);
 				}
 			}
 		}
@@ -377,6 +383,7 @@ namespace GercStudio.DragRacingFramework
 			gameData.valuesToSave.installedUpgrades[vehicleController.carId + "power"] = vehicleController.carInfo.Power;
 			gameData.valuesToSave.installedUpgrades[vehicleController.carId + "nitro"] = vehicleController.carInfo.nitroTime;
 			gameData.valuesToSave.installedUpgrades[vehicleController.carId + "mass"] = vehicleController.carInfo.Mass;
+			gameData.valuesToSave.installedUpgrades[vehicleController.carId + "chasis"] = vehicleController.carInfo.Chasis;
 		}
 		
 		public static string CorrectName(string currentName)

@@ -191,7 +191,7 @@ namespace GercStudio.DragRacingFramework
 
 				if (script.currentMenuInGame >= script.currentMenusInGame.Count)
 					script.currentMenuPage = 0;
-
+				
 				script.currentMenuPage = script.currentMenusInGame[script.currentMenuInGame];
 			}
 		}
@@ -543,6 +543,7 @@ namespace GercStudio.DragRacingFramework
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.selectCarMenu.powerText"), new GUIContent("Power"));
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.selectCarMenu.nitroTimeText"), new GUIContent("Nitro Time"));
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.selectCarMenu.massText"), new GUIContent("Mass"));
+					//EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.selectCarMenu.chasisText"), new GUIContent("Chasis"));
 					EditorGUILayout.EndVertical();
 					EditorGUILayout.Space();
 					EditorGUILayout.LabelField("Buttons", EditorStyles.boldLabel);
@@ -581,6 +582,7 @@ namespace GercStudio.DragRacingFramework
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.transmissionButton"), new GUIContent("Transmission"));
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.nitroButton"), new GUIContent("Nitro"));
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.weightButton"), new GUIContent("Weight"));
+					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.chasisButton"), new GUIContent("Chasis"));
 					EditorGUILayout.Space();
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.backButton"), new GUIContent("Back"));
 					EditorGUILayout.Space();
@@ -626,7 +628,14 @@ namespace GercStudio.DragRacingFramework
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.massText"), new GUIContent("Weight"));
 					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.massAdditionalText"), new GUIContent("Additional°", "The 'Additional' text will display upgrade values (+10, -5, etc)."));
 					EditorGUILayout.EndVertical();
-					
+
+					EditorGUILayout.Space();
+
+					EditorGUILayout.BeginVertical("helpbox");
+					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.chasisText"), new GUIContent("Chasis"));
+					EditorGUILayout.PropertyField(serializedObject.FindProperty("menuUI.upgradeMenu.chasisAdditionalText"), new GUIContent("Additional°", "The 'Additional' text will display upgrade values (+10, -5, etc)."));
+					EditorGUILayout.EndVertical();
+
 					EditorGUILayout.EndVertical();
 // EditorGUILayout.EndVertical();
 

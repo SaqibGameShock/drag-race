@@ -3019,7 +3019,7 @@ GameObject:
   - component: {fileID: 4503792230297714202}
   - component: {fileID: 399815344930314268}
   - component: {fileID: 2382498254161662044}
-  - component: {fileID: 3217862468592806210}
+  - component: {fileID: 8878607897155184769}
   m_Layer: 0
   m_Name: UI MANAGER
   m_TagString: Untagged
@@ -3257,6 +3257,7 @@ MonoBehaviour:
       transmissionButton: {fileID: 6728777331868951327}
       nitroButton: {fileID: 7391822430329460690}
       weightButton: {fileID: 541424626248336783}
+      chasisButton: {fileID: 0}
       priceAndLevelText: {fileID: 8726460931271239668}
       nameText: {fileID: 5758827399613839104}
       maxSpeedText: {fileID: 5258546059906221672}
@@ -3264,11 +3265,13 @@ MonoBehaviour:
       powerText: {fileID: 6388935675377812894}
       nitroTimeText: {fileID: 7479753872897887097}
       massText: {fileID: 1996254528728979235}
+      chasisText: {fileID: 0}
       maxSpeedAdditionalText: {fileID: 623343262697926783}
       accelerationAdditionalText: {fileID: 7909527817761312395}
       powerAdditionalText: {fileID: 5983632320084770384}
       nitroTimeAdditionalText: {fileID: 485797672714143573}
       massAdditionalText: {fileID: 2290413600256697390}
+      chasisAdditionalText: {fileID: 0}
       normButtonsColors:
       - {r: 0, g: 0, b: 0, a: 0}
       - {r: 0, g: 0, b: 0, a: 0}
@@ -3363,7 +3366,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3217862468592806210
+--- !u!114 &8878607897155184769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

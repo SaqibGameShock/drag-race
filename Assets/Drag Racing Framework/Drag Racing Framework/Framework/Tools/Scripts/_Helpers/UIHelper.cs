@@ -783,6 +783,7 @@ namespace GercStudio.DragRacingFramework
 			public Button transmissionButton;
 			public Button nitroButton;
 			public Button weightButton;
+			public Button chasisButton;
 
 			public Text priceAndLevelText;
 			public Text nameText;
@@ -792,12 +793,14 @@ namespace GercStudio.DragRacingFramework
 			public Text powerText;
 			public Text nitroTimeText;
 			public Text massText;
+			public Text chasisText;
 
 			public Text maxSpeedAdditionalText;
 			public Text accelerationAdditionalText;
 			public Text powerAdditionalText;
 			public Text nitroTimeAdditionalText;
 			public Text massAdditionalText;
+			public Text chasisAdditionalText;
 
 			public Color[] normButtonsColors = new Color[5];
 			public Sprite[] normButtonsSprites = new Sprite[5];
@@ -990,7 +993,7 @@ namespace GercStudio.DragRacingFramework
 				currentUIManager.menuUI.selectCarMenu.previousCar.onClick.AddListener(delegate { menuManager.ChangeCar("-"); });
 
 			if (currentUIManager.menuUI.mainMenu.startGameButton)
-				currentUIManager.menuUI.mainMenu.startGameButton.onClick.AddListener(menuManager.StartRace);
+				currentUIManager.menuUI.mainMenu.startGameButton.onClick.AddListener(menuManager/*.panelactivator*/.StartRace);
 
 			if (currentUIManager.menuUI.mainMenu.exitButton)
 				currentUIManager.menuUI.mainMenu.exitButton.onClick.AddListener(menuManager.CloseApp);
@@ -1030,6 +1033,9 @@ namespace GercStudio.DragRacingFramework
 
 			if (currentUIManager.menuUI.upgradeMenu.weightButton)
 				currentUIManager.menuUI.upgradeMenu.weightButton.onClick.AddListener(delegate { menuManager.ChooseUpgrade("weight", true); });
+
+			if (currentUIManager.menuUI.upgradeMenu.chasisButton)
+				currentUIManager.menuUI.upgradeMenu.chasisButton.onClick.AddListener(delegate { menuManager.ChooseUpgrade("chasis", true); });
 
 			if (currentUIManager.menuUI.upgradeMenu.buyButton)
 				currentUIManager.menuUI.upgradeMenu.buyButton.onClick.AddListener(delegate { menuManager.BuyUpgrade(); });

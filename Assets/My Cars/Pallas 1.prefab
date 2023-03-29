@@ -181,6 +181,7 @@ MonoBehaviour:
     Power: 105
     nitroTime: 3
     Mass: 1300
+    Chasis: 1
   gameManager: {fileID: 0}
   rotationPart: {fileID: 4584821802424513815}
   wheels:
@@ -225,7 +226,7 @@ MonoBehaviour:
   selectedDashboard: 0
   currentTransmission: 1
   predictedTransmission: 0
-  currentInspectorTab: 1
+  currentInspectorTab: 0
   isNitro: 0
   isFinished: 0
   ai: 0

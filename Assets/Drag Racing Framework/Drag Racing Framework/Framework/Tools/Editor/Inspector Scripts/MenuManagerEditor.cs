@@ -24,6 +24,7 @@ namespace GercStudio.DragRacingFramework
         private ReorderableList transmissionUpgradeList;
         private ReorderableList nitroUpgardeList;
         private ReorderableList weightUpgardeList;
+        private ReorderableList chasisUpgardeList;
 
         private GUIStyle grayBackground;
 
@@ -281,6 +282,52 @@ namespace GercStudio.DragRacingFramework
                     script.upgradeParameters.weightUpgrades[index].addMassValue = EditorGUI.IntField(new Rect(rect.x + 16f * rect.width / 20 + 37, rect.y, rect.width - 16 * rect.width / 20 - 37, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addMassValue);
                 }
             };
+
+            chasisUpgardeList = new ReorderableList(serializedObject, serializedObject.FindProperty("upgradeParameters.chasisUpgrades"), true, true, true, true)
+            {
+                drawHeaderCallback = rect =>
+                {
+                    EditorGUI.LabelField(new Rect(rect.x + 10, rect.y, rect.width / 10 - 10, EditorGUIUtility.singleLineHeight), "№");
+                    EditorGUI.LabelField(new Rect(rect.x + rect.width / 20 + 20, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Price");
+                    EditorGUI.LabelField(new Rect(rect.x + 3.5f * rect.width / 20 + 25, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Level");
+                    EditorGUI.LabelField(new Rect(rect.x + 6 * rect.width / 20 + 34, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Speed");
+                    EditorGUI.LabelField(new Rect(rect.x + 8.5f * rect.width / 20 + 36, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Boost");
+                    EditorGUI.LabelField(new Rect(rect.x + 11 * rect.width / 20 + 36, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Power");
+                    EditorGUI.LabelField(new Rect(rect.x + 13.5f * rect.width / 20 + 36, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Nitro");
+                    EditorGUI.LabelField(new Rect(rect.x + 16 * rect.width / 20 + 36, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), "Mass");
+                },
+
+
+                onAddCallback = items =>
+                {
+                    if (!Application.isPlaying)
+                    {
+                        script.upgradeParameters.weightUpgrades.Add(new GameHelper.UpgradeParameter());
+                    }
+                },
+
+                onRemoveCallback = items =>
+                {
+                    if (!Application.isPlaying)
+                    {
+                        script.upgradeParameters.weightUpgrades.Remove(script.upgradeParameters.weightUpgrades[items.index]);
+                    }
+                },
+
+
+                drawElementCallback = (rect, index, isActive, isFocused) =>
+                {
+                    EditorGUI.LabelField(new Rect(rect.x, rect.y, rect.width / 20, EditorGUIUtility.singleLineHeight), (index + 1).ToString(), EditorStyles.boldLabel);
+                    script.upgradeParameters.weightUpgrades[index].price = EditorGUI.IntField(new Rect(rect.x + rect.width / 20 + 10, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].price);
+                    script.upgradeParameters.weightUpgrades[index].level = EditorGUI.IntField(new Rect(rect.x + 3.5f * rect.width / 20 + 15, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].level);
+                    script.upgradeParameters.weightUpgrades[index].addSpeedValue = EditorGUI.IntField(new Rect(rect.x + 6 * rect.width / 20 + 25, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addSpeedValue);
+                    script.upgradeParameters.weightUpgrades[index].addAccelerationValue = EditorGUI.IntField(new Rect(rect.x + 8.5f * rect.width / 20 + 28, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addAccelerationValue);
+                    script.upgradeParameters.weightUpgrades[index].addPowerValue = EditorGUI.IntField(new Rect(rect.x + 11f * rect.width / 20 + 31, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addPowerValue);
+                    script.upgradeParameters.weightUpgrades[index].addNitroValue = EditorGUI.IntField(new Rect(rect.x + 13.5f * rect.width / 20 + 34, rect.y, rect.width / 10, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addNitroValue);
+                    script.upgradeParameters.weightUpgrades[index].addMassValue = EditorGUI.IntField(new Rect(rect.x + 16f * rect.width / 20 + 37, rect.y, rect.width - 16 * rect.width / 20 - 37, EditorGUIUtility.singleLineHeight), script.upgradeParameters.weightUpgrades[index].addMassValue);
+                }
+            };
+
 
             carsList = new ReorderableList(serializedObject, serializedObject.FindProperty("cars"), true, true, true, true)
             {
@@ -653,6 +700,10 @@ namespace GercStudio.DragRacingFramework
                     EditorGUILayout.Space();
                     EditorGUILayout.Space();
                     EditorGUILayout.LabelField("Weight Upgrades", EditorStyles.boldLabel);
+                    weightUpgardeList.DoLayoutList();
+                    EditorGUILayout.Space();
+                    EditorGUILayout.Space();
+                    EditorGUILayout.LabelField("Chasis Upgrade", EditorStyles.boldLabel);
                     weightUpgardeList.DoLayoutList();
                     EditorGUILayout.EndVertical();
                     break;

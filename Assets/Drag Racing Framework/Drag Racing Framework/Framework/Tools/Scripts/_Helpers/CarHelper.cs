@@ -17,7 +17,6 @@ namespace GercStudio.DragRacingFramework
 			public int Power = 100;
 			public int nitroTime = 3;
 			public int Mass = 1100;
-			public int Chasis = 1;
 		}
 
 		[Serializable]

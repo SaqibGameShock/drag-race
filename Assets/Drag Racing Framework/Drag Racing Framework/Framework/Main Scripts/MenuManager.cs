@@ -48,7 +48,7 @@ namespace GercStudio.DragRacingFramework
 		public Transform defaultCamera;
 		public Transform carsShopCamera;
 		public Transform carsUpgradesCamera;
-
+		public GameObject game;
 		public GameObject currentCarInMenu;
 
 		public GameHelper.CameraPosition currentCameraPositions;
@@ -366,6 +366,9 @@ namespace GercStudio.DragRacingFramework
 			if (currentUIManager.menuUI.upgradeMenu.weightButton)
 				currentUIManager.menuUI.upgradeMenu.weightButton.interactable = true;
 
+			if (currentUIManager.menuUI.upgradeMenu.chasisButton)
+				currentUIManager.menuUI.upgradeMenu.chasisButton.interactable = true;
+
 			switch (type)
 			{
 				case "engine":
@@ -401,6 +404,12 @@ namespace GercStudio.DragRacingFramework
 						currentUIManager.menuUI.upgradeMenu.weightButton.interactable = false;
 
 					_currentUpgradeSlot = 4;
+					break;
+				case "chasis":
+					if (currentUIManager.menuUI.upgradeMenu.chasisButton)
+						currentUIManager.menuUI.upgradeMenu.chasisButton.interactable = false;
+
+					_currentUpgradeSlot = 5;
 					break;
 			}
 
@@ -629,6 +638,9 @@ namespace GercStudio.DragRacingFramework
 			if (currentUIManager.menuUI.upgradeMenu.massText)
 				currentUIManager.menuUI.upgradeMenu.massText.text = "Mass: " + (carController ? carController.carInfo.Mass.ToString() : "");
 
+			if (currentUIManager.menuUI.upgradeMenu.chasisText)
+				currentUIManager.menuUI.upgradeMenu.chasisText.text = "Chasis: " + (carController ? carController.carInfo.Mass.ToString() : "");
+
 
 			switch (_currentUpgradeSlot)
 			{
@@ -653,7 +665,7 @@ namespace GercStudio.DragRacingFramework
 					break;
 
 				case 5:
-					SetStage("Chasis", carController ? carController.carId + "Chasis_Stage" : "", carController ? upgradeParameters.Chasis_Upgrades : new List<GameHelper.UpgradeParameter>());
+					SetStage("Chasis", carController ? carController.carId + "chasisStage" : "", carController ? upgradeParameters.chasisUpgrades : new List<GameHelper.UpgradeParameter>());
 					break;
 			}
 			
@@ -813,7 +825,7 @@ namespace GercStudio.DragRacingFramework
 
 				case 5:
 
-					AddValues(carController.carId + "Chasis_Stage", upgradeParameters.Chasis_Upgrades);
+					AddValues(carController.carId + "weightStage", upgradeParameters.chasisUpgrades);
 					break;
 			}
 		}
@@ -838,7 +850,7 @@ namespace GercStudio.DragRacingFramework
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "transmissionStage", -1);
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "nitroStage", -1);
 				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "weightStage", -1);
-				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "Chasis_Stage", -1);
+				gameAssets.valuesToSave.installedUpgrades.Add(car.vehicleController.carId + "chasisStage", -1);
 			}
 			
 			GameAssets.SaveDataToFile(gameAssets.valuesToSave);
@@ -908,6 +920,13 @@ namespace GercStudio.DragRacingFramework
 
 		}
 
+		public void panelactivator()
+        {
+			//.SetActive(true);
+        }
+
+
+
 		public void StartRace()
 		{
 			startRaceEvent.Invoke();
@@ -928,7 +947,7 @@ namespace GercStudio.DragRacingFramework
 				SceneManager.LoadScene(index);
 			}
 #endif
-		}
+        }
 
 #if DR_MULTIPLAYER
 		
@@ -1030,7 +1049,7 @@ namespace GercStudio.DragRacingFramework
 		}
 #endif
 
-		private void ManageCars()
+        private void ManageCars()
 		{
 			gameAssets.carsList.Clear();
 			gameAssets.carsList.AddRange(cars);
